@@ -61,7 +61,11 @@ namespace Accounting
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-
+            cmbType.SelectedIndex = -1;
+            cmbCategory.SelectedIndex = -1;
+            txtAmount.Clear();
+            textBox1.Clear();
+            dtpDate.Value = DateTime.Now;
         }
 
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -82,11 +86,7 @@ namespace Accounting
         private void btnSave_Click(object sender, EventArgs e)
         {
             
-                cmbType.SelectedIndex = -1;
-                cmbCategory.SelectedIndex = -1;
-                txtAmount.Clear();
-                textBox1.Clear();
-                dtpDate.Value = DateTime.Now;
+
             
 
         }

@@ -156,7 +156,7 @@ namespace Accounting
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(132, 51);
             btnClear.TabIndex = 11;
-            btnClear.Text = "編輯";
+            btnClear.Text = "清除";
             btnClear.UseVisualStyleBackColor = true;
             btnClear.Click += btnClear_Click;
             // 
@@ -166,7 +166,7 @@ namespace Accounting
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(132, 51);
             btnSave.TabIndex = 12;
-            btnSave.Text = "清除";
+            btnSave.Text = "儲存";
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
             // 
