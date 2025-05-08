@@ -52,6 +52,7 @@ namespace Accounting
             dtpDate.Name = "dtpDate";
             dtpDate.Size = new Size(178, 27);
             dtpDate.TabIndex = 0;
+            dtpDate.ValueChanged += dtpDate_ValueChanged;
             // 
             // label1
             // 
@@ -98,6 +99,7 @@ namespace Accounting
             cmbCategory.Name = "cmbCategory";
             cmbCategory.Size = new Size(174, 27);
             cmbCategory.TabIndex = 5;
+            cmbCategory.SelectedIndexChanged += cmbCategory_SelectedIndexChanged;
             // 
             // label4
             // 
@@ -117,6 +119,7 @@ namespace Accounting
             cmbType.Name = "cmbType";
             cmbType.Size = new Size(174, 27);
             cmbType.TabIndex = 7;
+            cmbType.SelectedIndexChanged += cmbType_SelectedIndexChanged;
             // 
             // label5
             // 
@@ -127,7 +130,7 @@ namespace Accounting
             label5.Size = new Size(78, 36);
             label5.TabIndex = 8;
             label5.Text = "備註:";
-            label5.Click += this.label5_Click;
+            label5.Click += label5_Click;
             // 
             // textBox1
             // 
@@ -153,8 +156,9 @@ namespace Accounting
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(132, 51);
             btnClear.TabIndex = 11;
-            btnClear.Text = "清除";
+            btnClear.Text = "編輯";
             btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
             // 
             // btnSave
             // 
@@ -162,7 +166,7 @@ namespace Accounting
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(132, 51);
             btnSave.TabIndex = 12;
-            btnSave.Text = "儲存";
+            btnSave.Text = "刪除";
             btnSave.UseVisualStyleBackColor = true;
             // 
             // dgvRecords
@@ -194,7 +198,7 @@ namespace Accounting
             Controls.Add(label1);
             Controls.Add(dtpDate);
             Name = "Form1";
-            Text = "Form1";
+            Text = " ";
             ((System.ComponentModel.ISupportInitialize)dgvRecords).EndInit();
             ResumeLayout(false);
             PerformLayout();
