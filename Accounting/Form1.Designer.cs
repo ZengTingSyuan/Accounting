@@ -166,8 +166,9 @@ namespace Accounting
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(132, 51);
             btnSave.TabIndex = 12;
-            btnSave.Text = "刪除";
+            btnSave.Text = "清除";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // dgvRecords
             // 
