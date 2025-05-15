@@ -4,7 +4,6 @@ namespace Accounting
 {
     public partial class Form1 : Form
     {
-        public object Records { get; private set; }
 
         List<Record> records = new List<Record>();
 
@@ -27,17 +26,18 @@ namespace Accounting
             try
             {
                 string json = File.ReadAllText(filePath);
-                List<Record> loadedRecords = JsonSerializer.Deserialize<List<Record>>(json) ?? new List<Record>();
+                records = JsonSerializer.Deserialize<List<Record>>(json) ?? new List<Record>();
 
                 // 顯示到 DataGridView
-                dgvRecords.DataSource = null; // 清空原本的資料
-                dgvRecords.DataSource = loadedRecords;
+                dgvRecords.DataSource = null;
+                dgvRecords.DataSource = records;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("載入資料失敗：" + ex.Message, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
