@@ -54,14 +54,14 @@ namespace Accounting
             // 檢查金額格式
             if (!decimal.TryParse(txtAmount.Text, out decimal amount))
             {
-                MessageBox.Show("請輸入正確的金額");
+                MessageBox.Show("請輸入正確的金額", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             // 檢查是否有漏填
             if (string.IsNullOrWhiteSpace(type) || string.IsNullOrWhiteSpace(category))
             {
-                MessageBox.Show("請選擇類型與分類");
+                MessageBox.Show("請選擇類型與分類", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -89,7 +89,7 @@ namespace Accounting
             textBox1.Clear();
             dtpDate.Value = DateTime.Now;
 
-            MessageBox.Show("新增成功！");
+            MessageBox.Show("新增成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
 
