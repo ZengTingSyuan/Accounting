@@ -1,3 +1,5 @@
+using System.Text.Json;
+
 namespace Accounting
 {
     public partial class Form1 : Form
@@ -85,10 +87,47 @@ namespace Accounting
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            
-
-            
-
+            List<Record> testRecords = new List<Record>
+    {
+        new Record
+        {
+            Date = DateTime.Now,
+            Type = "支出",
+            Category = "食物",
+            Amount = 120,
+            Note = "午餐"
+        },
+        new Record
+        {
+            Date = DateTime.Now,
+            Type = "收入",
+            Category = "薪水",
+            Amount = 30000,
+            Note = "打工收入"
         }
+    };
+
+            // 序列化成 JSON 字串並存檔
+            try
+            {
+                string json = JsonSerializer.Serialize(testRecords, new JsonSerializerOptions
+                {
+                    WriteIndented = true,
+                    Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+
+                });
+                File.WriteAllText("test_records.json", json);
+
+                MessageBox.Show("測試紀錄已儲存為 test_records.json！", "測試成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("儲存失敗：" + ex.Message, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
     }
+    
 }
