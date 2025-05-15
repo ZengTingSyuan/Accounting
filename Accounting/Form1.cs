@@ -6,9 +6,37 @@ namespace Accounting
     {
         public object Records { get; private set; }
 
+        List<Record> records = new List<Record>();
+
+
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void LoadAndDisplayRecords()
+        {
+            string filePath = "records.json";
+
+            if (!File.Exists(filePath))
+            {
+                MessageBox.Show("找不到檔案，請先儲存資料。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                string json = File.ReadAllText(filePath);
+                List<Record> loadedRecords = JsonSerializer.Deserialize<List<Record>>(json) ?? new List<Record>();
+
+                // 顯示到 DataGridView
+                dgvRecords.DataSource = null; // 清空原本的資料
+                dgvRecords.DataSource = loadedRecords;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("載入資料失敗：" + ex.Message, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -18,29 +46,26 @@ namespace Accounting
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            // 1. 檢查是否有欄位沒填
-            if (string.IsNullOrWhiteSpace(cmbType.Text) ||
-                string.IsNullOrWhiteSpace(cmbCategory.Text) ||
-                string.IsNullOrWhiteSpace(txtAmount.Text))
-            {
-                MessageBox.Show("請填寫所有欄位", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // 2. 嘗試轉換金額
-            if (!decimal.TryParse(txtAmount.Text, out decimal amount))
-            {
-                MessageBox.Show("請輸入正確的金額", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // 3. 讀取輸入資料
             string type = cmbType.SelectedItem?.ToString() ?? "";
             string category = cmbCategory.SelectedItem?.ToString() ?? "";
             string note = textBox1.Text.Trim();
             DateTime date = dtpDate.Value;
 
-            // 4. 建立 Record 並加入 List
+            // 檢查金額格式
+            if (!decimal.TryParse(txtAmount.Text, out decimal amount))
+            {
+                MessageBox.Show("請輸入正確的金額");
+                return;
+            }
+
+            // 檢查是否有漏填
+            if (string.IsNullOrWhiteSpace(type) || string.IsNullOrWhiteSpace(category))
+            {
+                MessageBox.Show("請選擇類型與分類");
+                return;
+            }
+
+            // 建立紀錄
             Record newRecord = new Record
             {
                 Date = date,
@@ -50,15 +75,22 @@ namespace Accounting
                 Note = note
             };
 
-            // 5. 清空輸入欄位
+            // 加到正確的 List
+            records.Add(newRecord);
+
+            // 顯示最新資料
+            dgvRecords.DataSource = null;
+            dgvRecords.DataSource = records;
+
+            // 清空欄位
             cmbType.SelectedIndex = -1;
             cmbCategory.SelectedIndex = -1;
             txtAmount.Clear();
             textBox1.Clear();
             dtpDate.Value = DateTime.Now;
 
-            // 6. 顯示成功提示
-            MessageBox.Show("新增成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("新增成功！");
+
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -87,47 +119,39 @@ namespace Accounting
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            List<Record> testRecords = new List<Record>
-    {
-        new Record
-        {
-            Date = DateTime.Now,
-            Type = "支出",
-            Category = "食物",
-            Amount = 120,
-            Note = "午餐"
-        },
-        new Record
-        {
-            Date = DateTime.Now,
-            Type = "收入",
-            Category = "薪水",
-            Amount = 30000,
-            Note = "打工收入"
-        }
-    };
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true,
+                Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+            };
 
-            // 序列化成 JSON 字串並存檔
             try
             {
-                string json = JsonSerializer.Serialize(testRecords, new JsonSerializerOptions
-                {
-                    WriteIndented = true,
-                    Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
-
-                });
-                File.WriteAllText("test_records.json", json);
-
-                MessageBox.Show("測試紀錄已儲存為 test_records.json！", "測試成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string json = JsonSerializer.Serialize(records, options);
+                File.WriteAllText("records.json", json);
+                MessageBox.Show("資料已成功儲存！", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("儲存失敗：" + ex.Message, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-
-    }
     
+
+        private void dgvRecords_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            LoadAndDisplayRecords();
+        }
+
+        private void txtAmount_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
+
 }

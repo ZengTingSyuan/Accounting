@@ -80,6 +80,7 @@ namespace Accounting
             txtAmount.Name = "txtAmount";
             txtAmount.Size = new Size(180, 27);
             txtAmount.TabIndex = 3;
+            txtAmount.TextChanged += txtAmount_TextChanged;
             // 
             // label3
             // 
@@ -178,6 +179,7 @@ namespace Accounting
             dgvRecords.RowHeadersWidth = 51;
             dgvRecords.Size = new Size(644, 242);
             dgvRecords.TabIndex = 13;
+            dgvRecords.CellContentClick += dgvRecords_CellContentClick;
             // 
             // Form1
             // 
@@ -200,6 +202,7 @@ namespace Accounting
             Controls.Add(dtpDate);
             Name = "Form1";
             Text = " ";
+            Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dgvRecords).EndInit();
             ResumeLayout(false);
             PerformLayout();
