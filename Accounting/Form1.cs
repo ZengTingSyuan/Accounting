@@ -136,7 +136,7 @@ namespace Accounting
                 MessageBox.Show("儲存失敗：" + ex.Message, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-    
+
 
         private void dgvRecords_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -151,6 +151,29 @@ namespace Accounting
         private void txtAmount_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dgvRecords.CurrentRow == null)
+            {
+                MessageBox.Show("請先選取一筆資料", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            int index = dgvRecords.CurrentRow.Index;
+            if (index >= 0 && index < records.Count)
+            {
+                // 確認是否刪除
+                var result = MessageBox.Show("確定要刪除這筆資料嗎？", "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    records.RemoveAt(index);
+                    // 更新畫面
+                    dgvRecords.DataSource = null;
+                    dgvRecords.DataSource = records;
+                    MessageBox.Show("刪除成功！");
+                }
+            }
         }
     }
 
