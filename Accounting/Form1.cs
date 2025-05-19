@@ -68,11 +68,11 @@ namespace Accounting
             // 建立紀錄
             Record newRecord = new Record
             {
-                Date = date,
-                Type = type,
-                Category = category,
-                Amount = amount,
-                Note = note
+                日期 = date,
+                金額 = amount,
+                分類 = type,
+                類型 = category,
+                備註 = note
             };
 
             // 加到正確的 List

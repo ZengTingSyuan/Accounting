@@ -8,11 +8,11 @@ namespace Accounting
 {
     public class Record
     {
-        public DateTime Date { get; set; }
-        public string Type { get; set; }      // 收入 或 支出
-        public string Category { get; set; }  // 食物、交通...
-        public decimal Amount { get; set; }
-        public string Note { get; set; }
+        public DateTime 日期 { get; set; }
+        public string 分類 { get; set; }      // 收入 或 支出
+        public string 類型 { get; set; }  // 食物、交通...
+        public decimal 金額 { get; set; }
+        public string 備註 { get; set; }
     }
 
 }
