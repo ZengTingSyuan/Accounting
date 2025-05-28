@@ -44,8 +44,11 @@ namespace Accounting
             btnSave = new Button();
             dgvRecords = new DataGridView();
             btnDelete = new Button();
-            btnAdduser = new ComboBox();
+            cmbUser = new ComboBox();
             label6 = new Label();
+            txtNewUser = new TextBox();
+            btnAddUser = new Button();
+            label7 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvRecords).BeginInit();
             SuspendLayout();
             // 
@@ -196,14 +199,14 @@ namespace Accounting
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
             // 
-            // btnAdduser
+            // cmbUser
             // 
-            btnAdduser.FormattingEnabled = true;
-            btnAdduser.Location = new Point(149, 32);
-            btnAdduser.Name = "btnAdduser";
-            btnAdduser.Size = new Size(164, 27);
-            btnAdduser.TabIndex = 15;
-            btnAdduser.SelectedIndexChanged += btnAdduser_SelectedIndexChanged;
+            cmbUser.FormattingEnabled = true;
+            cmbUser.Location = new Point(149, 32);
+            cmbUser.Name = "cmbUser";
+            cmbUser.Size = new Size(164, 27);
+            cmbUser.TabIndex = 15;
+            cmbUser.SelectedIndexChanged += btnAdduser_SelectedIndexChanged;
             // 
             // label6
             // 
@@ -215,14 +218,51 @@ namespace Accounting
             label6.TabIndex = 16;
             label6.Text = "使用者:";
             // 
+            // txtNewUser
+            // 
+            txtNewUser.BackColor = Color.White;
+            txtNewUser.Cursor = Cursors.IBeam;
+            txtNewUser.ForeColor = SystemColors.WindowText;
+            txtNewUser.Location = new Point(730, 23);
+            txtNewUser.Name = "txtNewUser";
+            txtNewUser.RightToLeft = RightToLeft.No;
+            txtNewUser.Size = new Size(136, 27);
+            txtNewUser.TabIndex = 17;
+            txtNewUser.TextChanged += txtNewUser_TextChanged;
+            // 
+            // btnAddUser
+            // 
+            btnAddUser.AutoEllipsis = true;
+            btnAddUser.Location = new Point(878, 23);
+            btnAddUser.Name = "btnAddUser";
+            btnAddUser.Size = new Size(94, 29);
+            btnAddUser.TabIndex = 18;
+            btnAddUser.Text = "新增使用者";
+            btnAddUser.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("新細明體-ExtB", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 136);
+            label7.Location = new Point(609, 27);
+            label7.Name = "label7";
+            label7.Size = new Size(114, 20);
+            label7.TabIndex = 19;
+            label7.Text = "使用者名稱";
+            label7.Click += label7_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoValidate = AutoValidate.EnableAllowFocusChange;
             BackColor = Color.LightBlue;
             ClientSize = new Size(1002, 594);
+            Controls.Add(label7);
+            Controls.Add(btnAddUser);
+            Controls.Add(txtNewUser);
             Controls.Add(label6);
-            Controls.Add(btnAdduser);
+            Controls.Add(cmbUser);
             Controls.Add(btnDelete);
             Controls.Add(dgvRecords);
             Controls.Add(btnSave);
@@ -238,6 +278,7 @@ namespace Accounting
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(dtpDate);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             Name = "Form1";
             Text = " ";
             Load += Form1_Load;
@@ -268,7 +309,10 @@ namespace Accounting
         private Button btnSave;
         private DataGridView dgvRecords;
         private Button btnDelete;
-        private ComboBox btnAdduser;
+        private ComboBox cmbUser;
         private Label label6;
+        private TextBox txtNewUser;
+        private Button btnAddUser;
+        private Label label7;
     }
 }
