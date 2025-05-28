@@ -64,6 +64,7 @@ namespace Accounting
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft JhengHei UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            label1.ForeColor = Color.FromArgb(90, 62, 43);
             label1.Location = new Point(197, 73);
             label1.Name = "label1";
             label1.Size = new Size(78, 36);
@@ -75,6 +76,7 @@ namespace Accounting
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft JhengHei UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            label2.ForeColor = Color.FromArgb(90, 62, 43);
             label2.Location = new Point(197, 122);
             label2.Name = "label2";
             label2.Size = new Size(78, 36);
@@ -93,6 +95,7 @@ namespace Accounting
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft JhengHei UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            label3.ForeColor = Color.FromArgb(90, 62, 43);
             label3.Location = new Point(507, 76);
             label3.Name = "label3";
             label3.Size = new Size(78, 36);
@@ -113,6 +116,7 @@ namespace Accounting
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft JhengHei UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            label4.ForeColor = Color.FromArgb(90, 62, 43);
             label4.Location = new Point(507, 122);
             label4.Name = "label4";
             label4.Size = new Size(78, 36);
@@ -133,6 +137,7 @@ namespace Accounting
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Microsoft JhengHei UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            label5.ForeColor = Color.FromArgb(90, 62, 43);
             label5.Location = new Point(45, 172);
             label5.Name = "label5";
             label5.Size = new Size(78, 36);
@@ -150,36 +155,43 @@ namespace Accounting
             // 
             // btnAdd
             // 
+            btnAdd.BackColor = Color.Wheat;
+            btnAdd.ForeColor = SystemColors.ControlDarkDark;
             btnAdd.Location = new Point(128, 231);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(154, 48);
             btnAdd.TabIndex = 10;
             btnAdd.Text = "新增";
-            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.UseVisualStyleBackColor = false;
             btnAdd.Click += btnAdd_Click;
             // 
             // btnClear
             // 
+            btnClear.BackColor = Color.Wheat;
+            btnClear.ForeColor = SystemColors.ControlDarkDark;
             btnClear.Location = new Point(335, 231);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(154, 48);
             btnClear.TabIndex = 11;
             btnClear.Text = "清除";
-            btnClear.UseVisualStyleBackColor = true;
+            btnClear.UseVisualStyleBackColor = false;
             btnClear.Click += btnClear_Click;
             // 
             // btnSave
             // 
+            btnSave.BackColor = Color.Wheat;
+            btnSave.ForeColor = SystemColors.ControlDarkDark;
             btnSave.Location = new Point(738, 231);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(154, 48);
             btnSave.TabIndex = 12;
             btnSave.Text = "儲存";
-            btnSave.UseVisualStyleBackColor = true;
+            btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += btnSave_Click;
             // 
             // dgvRecords
             // 
+            dgvRecords.BackgroundColor = Color.FromArgb(255, 249, 240);
             dgvRecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvRecords.Location = new Point(28, 303);
             dgvRecords.Name = "dgvRecords";
@@ -190,13 +202,15 @@ namespace Accounting
             // 
             // btnDelete
             // 
+            btnDelete.BackColor = Color.Wheat;
+            btnDelete.ForeColor = SystemColors.ControlDarkDark;
             btnDelete.Location = new Point(539, 231);
             btnDelete.Margin = new Padding(4);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(154, 48);
             btnDelete.TabIndex = 14;
             btnDelete.Text = "刪除";
-            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += btnDelete_Click;
             // 
             // cmbUser
@@ -206,12 +220,13 @@ namespace Accounting
             cmbUser.Name = "cmbUser";
             cmbUser.Size = new Size(164, 27);
             cmbUser.TabIndex = 15;
-            cmbUser.SelectedIndexChanged += btnAdduser_SelectedIndexChanged;
+            cmbUser.SelectedIndexChanged += cmbUser_SelectedIndexChanged;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Microsoft JhengHei UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            label6.ForeColor = Color.FromArgb(90, 62, 43);
             label6.Location = new Point(28, 21);
             label6.Name = "label6";
             label6.Size = new Size(115, 38);
@@ -233,20 +248,24 @@ namespace Accounting
             // btnAddUser
             // 
             btnAddUser.AutoEllipsis = true;
+            btnAddUser.BackColor = Color.Wheat;
+            btnAddUser.ForeColor = SystemColors.ControlDarkDark;
             btnAddUser.Location = new Point(878, 23);
             btnAddUser.Name = "btnAddUser";
             btnAddUser.Size = new Size(94, 29);
             btnAddUser.TabIndex = 18;
             btnAddUser.Text = "新增使用者";
-            btnAddUser.UseVisualStyleBackColor = true;
+            btnAddUser.UseVisualStyleBackColor = false;
+            btnAddUser.Click += btnAddUser_Click;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("新細明體-ExtB", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 136);
-            label7.Location = new Point(609, 27);
+            label7.Font = new Font("微軟正黑體", 15F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            label7.ForeColor = Color.FromArgb(90, 62, 43);
+            label7.Location = new Point(609, 22);
             label7.Name = "label7";
-            label7.Size = new Size(114, 20);
+            label7.Size = new Size(139, 32);
             label7.TabIndex = 19;
             label7.Text = "使用者名稱";
             label7.Click += label7_Click;
@@ -256,7 +275,7 @@ namespace Accounting
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoValidate = AutoValidate.EnableAllowFocusChange;
-            BackColor = Color.LightBlue;
+            BackColor = Color.FromArgb(255, 246, 229);
             ClientSize = new Size(1002, 594);
             Controls.Add(label7);
             Controls.Add(btnAddUser);

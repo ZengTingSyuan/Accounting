@@ -9,6 +9,10 @@ namespace Accounting
     public class User
     {
         public string Username { get; set; }
-        public List<Record> Records { get; set; } = new List<Record>();
+        
+        public override string ToString()
+        {
+            return Username; // 讓 ComboBox 顯示名字
+        }
     }
 }
