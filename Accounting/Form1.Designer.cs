@@ -51,7 +51,7 @@ namespace Accounting
             // 
             // dtpDate
             // 
-            dtpDate.Location = new Point(291, 90);
+            dtpDate.Location = new Point(294, 80);
             dtpDate.Name = "dtpDate";
             dtpDate.Size = new Size(178, 27);
             dtpDate.TabIndex = 0;
@@ -61,7 +61,7 @@ namespace Accounting
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft JhengHei UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            label1.Location = new Point(194, 83);
+            label1.Location = new Point(197, 73);
             label1.Name = "label1";
             label1.Size = new Size(78, 36);
             label1.TabIndex = 1;
@@ -72,7 +72,7 @@ namespace Accounting
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft JhengHei UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            label2.Location = new Point(194, 132);
+            label2.Location = new Point(197, 122);
             label2.Name = "label2";
             label2.Size = new Size(78, 36);
             label2.TabIndex = 2;
@@ -80,7 +80,7 @@ namespace Accounting
             // 
             // txtAmount
             // 
-            txtAmount.Location = new Point(291, 139);
+            txtAmount.Location = new Point(294, 129);
             txtAmount.Name = "txtAmount";
             txtAmount.Size = new Size(180, 27);
             txtAmount.TabIndex = 3;
@@ -90,7 +90,7 @@ namespace Accounting
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft JhengHei UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            label3.Location = new Point(504, 86);
+            label3.Location = new Point(507, 76);
             label3.Name = "label3";
             label3.Size = new Size(78, 36);
             label3.TabIndex = 4;
@@ -100,7 +100,7 @@ namespace Accounting
             // 
             cmbCategory.FormattingEnabled = true;
             cmbCategory.Items.AddRange(new object[] { "飲食", "交通", "購物", "娛樂", "日用品", "房租", "醫療", "社交", "禮物", "數位", "薪水", "零用錢", "獎金", "回饋", "交易", "股息", "租金", "投資", "其他" });
-            cmbCategory.Location = new Point(589, 93);
+            cmbCategory.Location = new Point(592, 83);
             cmbCategory.Name = "cmbCategory";
             cmbCategory.Size = new Size(174, 27);
             cmbCategory.TabIndex = 5;
@@ -110,7 +110,7 @@ namespace Accounting
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft JhengHei UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            label4.Location = new Point(504, 132);
+            label4.Location = new Point(507, 122);
             label4.Name = "label4";
             label4.Size = new Size(78, 36);
             label4.TabIndex = 6;
@@ -120,7 +120,7 @@ namespace Accounting
             // 
             cmbType.FormattingEnabled = true;
             cmbType.Items.AddRange(new object[] { "支出", "收入" });
-            cmbType.Location = new Point(589, 141);
+            cmbType.Location = new Point(592, 131);
             cmbType.Name = "cmbType";
             cmbType.Size = new Size(174, 27);
             cmbType.TabIndex = 7;
@@ -130,7 +130,7 @@ namespace Accounting
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Microsoft JhengHei UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            label5.Location = new Point(42, 182);
+            label5.Location = new Point(45, 172);
             label5.Name = "label5";
             label5.Size = new Size(78, 36);
             label5.TabIndex = 8;
@@ -139,15 +139,15 @@ namespace Accounting
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(132, 190);
+            textBox1.Location = new Point(135, 180);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(744, 27);
+            textBox1.Size = new Size(757, 27);
             textBox1.TabIndex = 9;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(129, 235);
+            btnAdd.Location = new Point(128, 231);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(154, 48);
             btnAdd.TabIndex = 10;
@@ -157,7 +157,7 @@ namespace Accounting
             // 
             // btnClear
             // 
-            btnClear.Location = new Point(336, 235);
+            btnClear.Location = new Point(335, 231);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(154, 48);
             btnClear.TabIndex = 11;
@@ -167,7 +167,7 @@ namespace Accounting
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(739, 235);
+            btnSave.Location = new Point(738, 231);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(154, 48);
             btnSave.TabIndex = 12;
@@ -178,7 +178,7 @@ namespace Accounting
             // dgvRecords
             // 
             dgvRecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvRecords.Location = new Point(38, 290);
+            dgvRecords.Location = new Point(28, 303);
             dgvRecords.Name = "dgvRecords";
             dgvRecords.RowHeadersWidth = 51;
             dgvRecords.Size = new Size(933, 258);
@@ -187,7 +187,7 @@ namespace Accounting
             // 
             // btnDelete
             // 
-            btnDelete.Location = new Point(540, 235);
+            btnDelete.Location = new Point(539, 231);
             btnDelete.Margin = new Padding(4);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(154, 48);
@@ -220,7 +220,7 @@ namespace Accounting
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
-            ClientSize = new Size(1002, 574);
+            ClientSize = new Size(1002, 594);
             Controls.Add(label6);
             Controls.Add(btnAdduser);
             Controls.Add(btnDelete);
