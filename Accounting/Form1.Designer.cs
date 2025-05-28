@@ -219,6 +219,7 @@ namespace Accounting
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.LightBlue;
             ClientSize = new Size(1002, 574);
             Controls.Add(label6);
             Controls.Add(btnAdduser);
