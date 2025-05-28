@@ -13,6 +13,7 @@ namespace Accounting
         public string 類型 { get; set; }  // 食物、交通...
         public decimal 金額 { get; set; }
         public string 備註 { get; set; }
+        public string 使用者 { get; set; } //username
     }
 
 }
