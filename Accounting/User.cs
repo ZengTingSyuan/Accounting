@@ -8,11 +8,12 @@ namespace Accounting
 {
     public class User
     {
+        //User類別自己打的
         public string Username { get; set; }
         
         public override string ToString()
         {
-            return Username; // 讓 ComboBox 顯示名字
+            return Username; // 讓使用者選擇顯示每個使用者的名字
         }
     }
 }

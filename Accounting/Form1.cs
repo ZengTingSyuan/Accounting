@@ -9,7 +9,6 @@ namespace Accounting
     {
 
         List<Record> records = new List<Record>();
-
         List<User> users = new List<User>();
         User currentUser = null;
 
@@ -24,13 +23,13 @@ namespace Accounting
             if (currentUser == null)
                 return;
 
-            string filePath = $"{currentUser.Username}_records.json";
+            string filePath = $"{currentUser.Username}_records.json";//把每個使用者json檔前面都有自己名稱
 
             if (!File.Exists(filePath))
             {
                 records = new List<Record>();
                 dgvRecords.DataSource = null;
-                dgvRecords.DataSource = records;
+                dgvRecords.DataSource = records;//參考chatgpt問他如何每個使用者有自己的檔案
                 return;
             }
 
@@ -54,7 +53,7 @@ namespace Accounting
             File.WriteAllText("users.json", json);
         }
 
-        private void LoadUsers()
+        private void LoadUsers()//問chatgpt如何讀取資料(有微調)
         {
             if (File.Exists("users.json"))
             {
@@ -85,21 +84,21 @@ namespace Accounting
             string note = textBox1.Text.Trim();
             DateTime date = dtpDate.Value;
 
-            // 檢查金額格式
-            if (!decimal.TryParse(txtAmount.Text, out decimal amount))
+            
+            if (!decimal.TryParse(txtAmount.Text, out decimal amount))// 檢查有沒有缺空
             {
-                MessageBox.Show("請輸入正確的金額", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("請輸入正確的金額", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);//icon有問chatgpt有建議可以加的東西嗎
                 return;
             }
 
-            // 檢查是否有漏填
-            if (string.IsNullOrWhiteSpace(type) || string.IsNullOrWhiteSpace(category))
+            
+            if (string.IsNullOrWhiteSpace(type) || string.IsNullOrWhiteSpace(category))// 檢查有沒有缺空
             {
-                MessageBox.Show("請選擇類型與分類", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("請選擇類型與分類", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);//icon有問chatgpt有建議可以加的東西嗎
                 return;
             }
 
-            // 建立紀錄
+            
             Record newRecord = new Record
             {
                 日期 = date,
@@ -107,18 +106,18 @@ namespace Accounting
                 分類 = type,
                 類型 = category,
                 備註 = note,
-                使用者 = currentUser?.Username
+                使用者 = currentUser?.Username//讓datagrid顯示並記錄
             };
 
-            // 加到正確的 List
-            records.Add(newRecord);
+            
+            records.Add(newRecord);// 加到正確的 List
 
-            // 顯示最新資料
-            dgvRecords.DataSource = null;
+            
+            dgvRecords.DataSource = null;// 顯示最新資料
             dgvRecords.DataSource = records;
 
-            // 清空欄位
-            cmbType.SelectedIndex = -1;
+            
+            cmbType.SelectedIndex = -1;// 清空欄位
             cmbCategory.SelectedIndex = -1;
             txtAmount.Clear();
             textBox1.Clear();
@@ -134,7 +133,7 @@ namespace Accounting
             cmbCategory.SelectedIndex = -1;
             txtAmount.Clear();
             textBox1.Clear();
-            dtpDate.Value = DateTime.Now;
+            dtpDate.Value = DateTime.Now;//把有填入的格子清除
         }
 
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -154,9 +153,9 @@ namespace Accounting
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (currentUser == null)
+            if (currentUser == null)//讀取格子是否空著
             {
-                MessageBox.Show("請先選擇使用者！", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("請先選擇使用者！", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);//icon有問chatgpt有建議可以加的東西嗎
                 return;
             }
 
@@ -170,11 +169,11 @@ namespace Accounting
             {
                 string json = JsonSerializer.Serialize(records, options);
                 File.WriteAllText($"{currentUser.Username}_records.json", json);
-                MessageBox.Show("資料已成功儲存！", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("資料已成功儲存！", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);//icon有問chatgpt有建議可以加的東西嗎
             }
             catch (Exception ex)
             {
-                MessageBox.Show("儲存失敗：" + ex.Message, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("儲存失敗：" + ex.Message, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);//icon有問chatgpt有建議可以加的東西嗎
             }
         }
 
@@ -190,7 +189,7 @@ namespace Accounting
 
             if (users.Count == 0)
             {
-                var defaultUser = new User { Username = "預設使用者" };
+                var defaultUser = new User { Username = "預設使用者" };//問chatgpt如果還沒用過程式怎麼預設一個使用者
                 users.Add(defaultUser);
                 SaveUsers();
             }
@@ -216,19 +215,19 @@ namespace Accounting
         {
             if (dgvRecords.CurrentRow == null)
             {
-                MessageBox.Show("請先選取一筆資料", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("請先選取一筆資料", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);//icon有問chatgpt有建議可以加的東西嗎
                 return;
             }
             int index = dgvRecords.CurrentRow.Index;
-            if (index >= 0 && index < records.Count)
+            if (index >= 0 && index < records.Count) // 確認是否刪除
             {
-                // 確認是否刪除
-                var result = MessageBox.Show("確定要刪除這筆資料嗎？", "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+               
+                var result = MessageBox.Show("確定要刪除這筆資料嗎？", "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question);//icon有問chatgpt有建議可以加的東西嗎
                 if (result == DialogResult.Yes)
                 {
                     records.RemoveAt(index);
-                    // 更新畫面
-                    dgvRecords.DataSource = null;
+                    
+                    dgvRecords.DataSource = null;// 更新畫面(把紀錄清除)
                     dgvRecords.DataSource = records;
                     MessageBox.Show("刪除成功！");
                 }
@@ -264,13 +263,13 @@ namespace Accounting
             string newUser = txtNewUser.Text.Trim();
             if (string.IsNullOrWhiteSpace(newUser))
             {
-                MessageBox.Show("請輸入使用者名稱", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("請輸入使用者名稱", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);//icon有問chatgpt有建議可以加的東西嗎
                 return;
             }
 
             if (users.Any(u => u.Username == newUser))
             {
-                MessageBox.Show("使用者已存在", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("使用者已存在", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);//icon有問chatgpt有建議可以加的東西嗎
                 return;
             }
 
@@ -285,7 +284,7 @@ namespace Accounting
 
             txtNewUser.Clear();
 
-            MessageBox.Show("新增使用者成功！", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("新增使用者成功！", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);//icon有問chatgpt有建議可以加的東西嗎
         }
     }
 
