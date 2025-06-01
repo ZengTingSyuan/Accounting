@@ -238,10 +238,10 @@ namespace Accounting
             txtNewUser.BackColor = Color.White;
             txtNewUser.Cursor = Cursors.IBeam;
             txtNewUser.ForeColor = SystemColors.WindowText;
-            txtNewUser.Location = new Point(730, 23);
+            txtNewUser.Location = new Point(738, 23);
             txtNewUser.Name = "txtNewUser";
             txtNewUser.RightToLeft = RightToLeft.No;
-            txtNewUser.Size = new Size(136, 27);
+            txtNewUser.Size = new Size(128, 27);
             txtNewUser.TabIndex = 17;
             txtNewUser.TextChanged += txtNewUser_TextChanged;
             // 
@@ -263,7 +263,7 @@ namespace Accounting
             label7.AutoSize = true;
             label7.Font = new Font("微軟正黑體", 15F, FontStyle.Bold, GraphicsUnit.Point, 136);
             label7.ForeColor = Color.FromArgb(90, 62, 43);
-            label7.Location = new Point(609, 22);
+            label7.Location = new Point(593, 18);
             label7.Name = "label7";
             label7.Size = new Size(139, 32);
             label7.TabIndex = 19;
